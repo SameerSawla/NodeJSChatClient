@@ -1,0 +1,15 @@
+<html>
+<title>Chat App</title>
+<head>
+	<script src="https://cdn.socket.io/socket.io-1.1.0.js"></script>
+	<script>
+			var socket  = io.connect();
+			socket.on('messages',function(data){
+				alert(data.hello);
+			});
+	</script>
+</head>
+<body>
+	Hey Man How Are You
+</body>
+</html>
