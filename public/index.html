@@ -2,34 +2,11 @@
 <title>Chat App</title>
 <head>
 	<script src="https://cdn.socket.io/socket.io-1.1.0.js"></script>
-	<script>
-			var socket  = io.connect();
-			var nickname = "anonymous";
-			socket.on('messages',function(data){
-				nickname = prompt("Enter your nickname : "); 
-				alert(data.hello);
-			});
-
-			socket.on('messageFromClient',function(data){ 
-				var append = document.getElementById('inputArea').innerHTML;
-				append = append + "</br>" + data;
-				document.getElementById('inputArea').innerHTML = append;
-				document.getElementById('textBox').value = '';
-			});
-
-			var emitmessage = function(){
-				var message = nickname + " : " + document.getElementById('textBox').value;
-				socket.emit('message',message);
-				var append = document.getElementById('inputArea').innerHTML;
-				append = append + "</br>" + message;
-				document.getElementById('inputArea').innerHTML = append;
-				document.getElementById('textBox').value = '';
-			}
-	</script>
+	<script src="script.js"></script>
 </head>
 <body>
-	<input id="textBox" type="text"/>
-	<button id="but" onclick="emitmessage()">Click to emit message to the server</button>
+	<input id="textBox" type="text" onkeypress="handlekeyPress(event)"/>
+	<button id="but" onclick="emitmessage()">Chat</button>
 	<div id="inputArea" style="align:center"></div>
 </body>
 </html>

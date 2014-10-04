@@ -6,7 +6,7 @@ var io = require('socket.io').listen(server);
 
 io.sockets.on('connection',function(client){
 	console.log('Client connected from address ' , client.handshake.address);	
-	client.emit('messages',{hello:'Message from server'});
+	client.emit('messages',{hello:'Welcome to the ChatApp'});
 	client.on('message',function(data){
 		client.broadcast.emit("messageFromClient",data);
 		console.log(data);
